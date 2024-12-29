@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<style>
+.content {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 5s ease-out;
+}
+
+.collapsible {
+  background-color: #777;
+  color: white;
+  cursor: pointer;
+  padding: 10px;
+  width: 100px;
+  text-align: center;
+  border: none;
+  outline: none;
+}
+
+.collapsible.active {
+  background-color: #555;
+}
+
+.collapsible:after {
+  content: '\002B';
+  color: white;
+  font-weight: bold;
+  float: right;
+  margin-left: 5px;
+}
+
+.collapsible.active:after {
+  content: "\2212";
+}
+
+</style>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Collapsible Div</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<button class="collapsible" onclick="toggleCollapse()">Open</button>
+<div class="content">
+  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam in dui mauris.</p>
+</div>
+
+<script>
+function toggleCollapse() {
+  const content = document.querySelector('.content');
+  const button = document.querySelector('.collapsible');
+
+  content.classList.toggle('active');
+  button.classList.toggle('active');
+
+  if (content.classList.contains('active')) {
+    content.style.maxHeight = content.scrollHeight + 'px';
+  } else {
+    content.style.maxHeight = '0';
+  }
+}
+
+</script>
+</body>
+</html>
